@@ -1,4 +1,4 @@
-const Model = require('../model');
+const Model = require('../../model');
 
 const getRecipes = (req, res) =>
   Model.getRecipes()
@@ -28,7 +28,7 @@ const getShoppingList = (req, res) => {
     .catch(() =>
       res.status(500).json({
         status: 500,
-        message: 'Cannot get shopping list',
+        message: 'Cannot get shopping list.',
       }),
     );
 };
@@ -46,7 +46,7 @@ const getInstructions = (req, res) => {
     .catch(() =>
       res.status(500).json({
         status: 500,
-        message: 'Cannot get instructions',
+        message: 'Cannot get instructions.',
       }),
     );
 };
