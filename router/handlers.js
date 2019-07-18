@@ -15,6 +15,25 @@ const getRecipes = (req, res) =>
       }),
     );
 
+const getShoppingList = (req, res) => {
+  const { id } = req.params;
+
+  Model.getShoppingList(id)
+    .then(recipe =>
+      res.status(200).json({
+        status: 200,
+        data: recipe,
+      }),
+    )
+    .catch(() =>
+      res.status(500).json({
+        status: 500,
+        message: 'Cannot get shopping list',
+      }),
+    );
+};
+
 module.exports = {
   getRecipes,
+  getShoppingList,
 };
