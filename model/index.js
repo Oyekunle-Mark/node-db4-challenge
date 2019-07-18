@@ -14,8 +14,16 @@ const getInstructions = id =>
     .where({ recipe_id: id })
     .orderBy('i.step_number');
 
+const getRecipeByIngredient = id =>
+  db('ingredientsByDetails as i')
+    .select('recipe_name')
+    .join('ingredients as ing', 'ing.id', 'i.ingredient_id')
+    .join('recipes as r', 'r.id', 'i.recipe_id')
+    .where({ ['ing.id']: id });
+
 module.exports = {
   getRecipes,
   getShoppingList,
   getInstructions,
+  getRecipeByIngredient,
 };
