@@ -15,6 +15,24 @@ const getRecipes = (req, res) =>
       }),
     );
 
+const getRecipeById = (req, res) => {
+  const { id } = req.params;
+
+  Model.getRecipes(id)
+    .then(recipe =>
+      res.status(200).json({
+        status: 200,
+        data: recipe,
+      }),
+    )
+    .catch(() =>
+      res.status(500).json({
+        status: 500,
+        message: 'Cannot get recipe.',
+      }),
+    );
+};
+
 const getShoppingList = (req, res) => {
   const { id } = req.params;
 
@@ -53,6 +71,7 @@ const getInstructions = (req, res) => {
 
 module.exports = {
   getRecipes,
+  getRecipeById,
   getShoppingList,
   getInstructions,
 };

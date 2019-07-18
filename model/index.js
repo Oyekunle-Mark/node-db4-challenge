@@ -1,6 +1,6 @@
 const db = require('../data/dbConfig');
 
-const getRecipes = () => db('recipes');
+const getRecipes = id => (id ? db('recipes').where({ id }) : db('recipes'));
 
 const getShoppingList = id =>
   db('ingredients as i')
